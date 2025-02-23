@@ -7,7 +7,7 @@ const themeSelector = document.getElementById('theme-selector');
 let animationInterval;
 let isRunning = false;
 let currentShape = 'circle';
-let currentTheme = 'dark';
+let currentShapeColor = '#1e90ff'; // Default shape color
 
 const breathingPatterns = {
     box: { inhale: 4, hold: 4, exhale: 4, hold2: 4 }, 
@@ -24,12 +24,12 @@ const shapes = {
     star: 'clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'
 };
 
-const themes = {
-    dark: { background: '#121212', color: 'white' },
-    light: { background: '#f4f4f4', color: 'black' },
-    blue: { background: '#1e3a8a', color: 'white' },
-    green: { background: '#14532d', color: 'white' },
-    purple: { background: '#4c1d95', color: 'white' }
+const shapeColors = {
+    blue: '#1e90ff',
+    green: '#2ecc71',
+    red: '#e74c3c',
+    purple: '#9b59b6',
+    orange: '#e67e22'
 };
 
 function startBreathing(pattern) {
@@ -75,16 +75,15 @@ function changeShape() {
     const currentIndex = shapeKeys.indexOf(currentShape);
     const nextIndex = (currentIndex + 1) % shapeKeys.length;
     currentShape = shapeKeys[nextIndex];
-    circle.setAttribute('style', shapes[currentShape]);
+    circle.setAttribute('style', `${shapes[currentShape]}; background-color: ${currentShapeColor};`);
 }
 
-function changeTheme() {
-    const themeKeys = Object.keys(themes);
-    const currentIndex = themeKeys.indexOf(currentTheme);
-    const nextIndex = (currentIndex + 1) % themeKeys.length;
-    currentTheme = themeKeys[nextIndex];
-    document.body.style.backgroundColor = themes[currentTheme].background;
-    document.body.style.color = themes[currentTheme].color;
+function changeShapeColor() {
+    const colorKeys = Object.keys(shapeColors);
+    const currentIndex = colorKeys.indexOf(Object.keys(shapeColors).find(key => shapeColors[key] === currentShapeColor));
+    const nextIndex = (currentIndex + 1) % colorKeys.length;
+    currentShapeColor = shapeColors[colorKeys[nextIndex]];
+    circle.style.backgroundColor = currentShapeColor;
 }
 
 document.getElementById('box-breathing').addEventListener('click', () => {
@@ -102,6 +101,7 @@ document.getElementById('four-seven-eight').addEventListener('click', () => {
         startBreathing(currentPattern);
     }
 });
+
 const lightDarkModeButton = document.getElementById('light-dark-mode');
 
 function toggleDarkLightMode() {
@@ -121,4 +121,4 @@ lightDarkModeButton.addEventListener('click', toggleDarkLightMode);
 
 startStopButton.addEventListener('click', startStop);
 shapeSelector.addEventListener('click', changeShape);
-themeSelector.addEventListener('click', changeTheme);
+themeSelector.addEventListener('click', changeShapeColor); // Updated to change shape color

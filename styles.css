@@ -51,11 +51,10 @@ body {
 .circle {
     width: 100px;
     height: 100px;
-    background-color: #1e90ff;
+    background-color: #1e90ff; /* Default color */
     border-radius: 50%;
-    transition: transform 1s ease-in-out;
+    transition: transform 1s ease-in-out, background-color 0.3s ease;
 }
-
 .controls {
     margin-top: 20px;
 }
