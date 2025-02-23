@@ -78,3 +78,75 @@ button:hover {
     font-size: 2em;
     margin-top: 20px;
 }
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+#timer {
+    font-size: 2em;
+    margin-top: 20px;
+}
+
+/* Additional styles for shape and theme selection */
+#shape-selector, #theme-selector {
+    font-size: 1.2em;
+}
+/* Default dark theme */
+body.dark {
+    background-color: #121212;
+    color: white;
+}
+
+/* Light theme */
+body.light {
+    background-color: #f4f4f4;
+    color: black;
+}
+
+/* Button styling for dark/light mode */
+#light-dark-mode {
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+#light-dark-mode:hover {
+    opacity: 0.8;
+}
